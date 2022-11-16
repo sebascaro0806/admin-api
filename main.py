@@ -8,7 +8,7 @@ app = FastAPI(
     version=settings.PROJECT_VERSION,
     docs_url=settings.URL_PREFIX + '/docs',
     redoc_url=settings.URL_PREFIX + '/redoc',
-    openapi_url=settings.URL_PREFIX + '/openapi.json'
+    openapi_url='/administration/' + settings.URL_PREFIX + '/openapi.json'
 )
 
 @user.get("/users", response_model=str)
