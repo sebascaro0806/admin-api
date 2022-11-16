@@ -1,19 +1,20 @@
 from fastapi import FastAPI, APIRouter
+from src.config.setup import settings
 
 user = APIRouter()
 app = FastAPI(
-    title="API Test",
-    description="API to manage users",
-    version=1.0,
-    docs_url='/administration/api/v1/docs',
-    redoc_url='/administration/api/v1/redoc',
-    openapi_url='/administration/api/v1/openapi.json'
+    title=settings.PROJECT_NAME,
+    description=settings.PROJECT_DESCRIPTION,
+    version=settings.PROJECT_VERSION,
+    docs_url=settings.URL_PREFIX + '/docs',
+    redoc_url=settings.URL_PREFIX + '/redoc',
+    openapi_url=settings.URL_PREFIX + '/openapi.json'
 )
 
 @user.get("/users", response_model=str)
 def get_users():
     return "Hola Mundo despliegue"
 
-app.include_router(user, prefix='/administration/api/v1')
+app.include_router(user, prefix=settings.URL_PREFIX)
 
 
