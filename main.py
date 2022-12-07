@@ -16,7 +16,7 @@ app = FastAPI(
 
 @user.get("/root", response_model=str, dependencies=[Depends(security)])
 def root():
-    return "Test " + settings.PROJECT_NAME
+    return "Test test" + settings.PROJECT_NAME
 
 app.include_router(user, prefix=settings.URL_PREFIX)
 
